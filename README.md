@@ -81,7 +81,7 @@ Note: inputs&button must be in a form
             }
         }
 ```
-"AddProject" method receive a object of "project" and list of files from the clientside(PFU)
+"AddProject" method receive an object of "project" and list of files from the clientside(PFU)
 
 PFU Architecture&Functions
 -------
