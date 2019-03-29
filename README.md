@@ -17,9 +17,9 @@ PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
 
 Include in your project
 -------
-Downlaod PyramidFileUplaoder plugin,Place the Folder "PyramidFileUplaoder" in root directory(if you want to place Folder and files in diffrent loction, you will need to change the default directories)
+Downlaod PyramidFileUplaoder plugin,Place the Folder "PyramidFileUplaoder" in root directory(if you want to place the Folder and it's files in diffrent location, you will need to change the default directory)
 
-Include js and css files to your file
+Include js and css files
 ```html
     <link rel="stylesheet" href="/PyramidFileUplaoder/PyramidFileUplaoder.css">
     <script src="/PyramidFileUplaoder/PyramidFileUplaoder.js"></script>
@@ -45,12 +45,13 @@ Simply call the "PyramidFileUplaoder" function & send Required parameters
             }
         });
 ```
-###This is how it looks like
+This is how it looks like
+-------
 
 ![alt text](https://raw.githubusercontent.com/Abdalla-Hiekal/PyramidFileUplaoder/master/1.PNG)
 -------
-###In this example I will use ASP.NET MVC as BackEnd (as a server)
-
+In this example I will use ASP.NET MVC as BackEnd (as a server)
+-------
 Note: inputs&button must be in a form
 
 ```cs
@@ -82,7 +83,7 @@ Note: inputs&button must be in a form
 ```
 "AddProject" method receive a object of "project" and list of files from the clientside(PFU)
 -------
-### PFU Architecture&Functions
+PFU Architecture&Functions
 -------
 ```
 function pyramidFileUplaoder(arg,success,before,errorFun)
@@ -96,7 +97,8 @@ before() -> Default:true, if not ture, will not send the request to the server, 
 errorFun(error) -> Default:empty,excuted when error,parameters:error
 
 ```
-###Example
+Example
+-------
 ```javascript
         pyramidFileUplaoder({
             extintionSizeError: function (list1,list2) {  // override...(no longer sweetalert dependant), excuted in error state only
@@ -127,7 +129,7 @@ errorFun(error) -> Default:empty,excuted when error,parameters:error
 ```
 -------
 
-### PFU Validation
+PFU Validation
 -------
 Note: dont use clientside validation only,, you have to make your serverside validation
 ```
@@ -137,7 +139,8 @@ maxSize -> determine minimum size for each file, Default:20 MB
 onlyImage -> allow only Image Extintions, Default:false
 allowEX -> allow custom Extintions as array eg... ['pdf','doc','docs']
 ```
-###Example
+Example
+-------
 ```javascript
         pyramidFileUplaoder({
             inputFileId: "fileInput", //  Id of the input type="file"
@@ -160,7 +163,7 @@ allowEX -> allow custom Extintions as array eg... ['pdf','doc','docs']
         });
 ```
 -------
-### PFU Styling
+PFU Styling
 -------
 Pyramid File Uplaoder Bootstrap v3 dependant and has a built-in loading mode
 Developers can choose their spinning(custom gif loading img)
@@ -172,7 +175,8 @@ gifLoading -> Default:(root)/PyramidFileUplaoder/Imgs/loading.gif
 buttonStyle -> Default:info
 buttonName -> Default:Browse
 ```
-###Example
+Example
+-------
 ```javascript
         pyramidFileUplaoder({
             inputFileId: "fileInput", //  Id of the input type="file"
@@ -195,13 +199,14 @@ buttonName -> Default:Browse
 ```
 -------
 
-### PFU Directory
+PFU Directory
 -------
 Pyramid File Uplaoder has "Imgs" folder,if you need to move this from
 Default:'root/PyramidFileUplaoder/"Imgs"' to another directory/Folder
 simply,, change the value of "imgsUrl"
 
-###Example
+Example
+-------
 ```javascript
         pyramidFileUplaoder({
             inputFileId: "fileInput", //  Id of the input type="file"
