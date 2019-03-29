@@ -187,7 +187,7 @@ Example
             buttonId: "send",          //  Id of the button, input& button must be in a form
             containerId: "fileShower", // Container that will show the Choosen files
             URL: "/Project/AddProject", // URl To send data
-            gifLoading: "dir/dir/dir/dir/spinning.gif", //Optional
+            gifLoading: "/dir/dir/dir/dir/spinning.gif", //Optional
             buttonStyle: 'primary', //Optional
             buttonName: 'Choose Images', //Optional
         },
@@ -216,7 +216,7 @@ Example
             buttonId: "send",          //  Id of the button, input& button must be in a form
             containerId: "fileShower", // Container that will show the Choosen files
             URL: "/Project/AddProject", // URl To send data
-            imgsUrl: "dir/dir/dir/dir/", //Optional,required in case of change directory
+            imgsUrl: "/dir/dir/dir/dir/", //Optional,required in case of change directory
         },
         function success(result) {   //function to excute in success,"result" is the server response
             //any action ...like redirect
