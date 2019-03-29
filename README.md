@@ -4,7 +4,7 @@ PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
 #### Features:
 - **Handle multiple files**.
 - **Built-In and Custom Validation**.
-- **Server frindly**.
+- **Server friendly**.
 - **Easy to use**.
 - **Send all form data to the server**.
 - **Flexible**.
