@@ -13,7 +13,7 @@ PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
 #### Dependencies:
 - Jquery.
 - Bootstrap V3.
-- Sweetalert **you can make it independent by override a function**.
+- Sweetalert (**you can make it independent by override a function**).
 
 Include in your project
 -------
@@ -27,7 +27,7 @@ Include js and css files
 
 How to use
 -------
-Simply call the "PyramidFileUplaoder" function & send Required parameters
+Simply call the "pyramidFileUplaoder" function & send Required parameters
 ```javascript
         pyramidFileUplaoder({
             inputFileId: "fileInput", // Id of the input type="file"
@@ -50,7 +50,7 @@ This is how it looks like
 
 ![alt text](https://raw.githubusercontent.com/Abdalla-Hiekal/PyramidFileUplaoder/master/1.PNG)
 -------
-In this example I will use ASP.NET MVC as BackEnd (as a server)
+In this example I will use ASP.NET MVC as backend
 -------
 Note: inputs&button must be in a form
 
@@ -82,13 +82,13 @@ Note: inputs&button must be in a form
         }
 ```
 "AddProject" method receive a object of "project" and list of files from the clientside(PFU)
--------
+
 PFU Architecture&Functions
 -------
 ```
 function pyramidFileUplaoder(arg,success,before,errorFun)
 
-arg.extintionSizeError() -> Default: use Sweetalert to show the errors to user, 
+arg.extintionSizeError(list1,list2) -> Default: use Sweetalert to show the errors to user, 
 parameters: first-> list of files objects have extention error  
 ^^ second-> list of files objects have size error
 
@@ -169,9 +169,9 @@ Example
 -------
 PFU Styling
 -------
-Pyramid File Uplaoder Bootstrap v3 dependant and has a built-in loading mode
-Developers can choose their spinning(custom gif loading img)
-also, they can change the name and the color of the button
+Pyramid File Uplaoder Bootstrap v3 dependant and has a built-in loading mode,
+Developers can choose their spinning(custom gif loading)
+also, they can change the name and the color of the button,
 colors:(info,primary,danger, etc..) as bootstrap v3
 
 ```
