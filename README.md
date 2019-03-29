@@ -8,7 +8,7 @@ PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
 - **Easy to use**.
 - **Send all form data to the server**.
 - **Flexible**.
-- **Secured from XXS Attacks**.
+- **Secured from XSS Attacks**.
 
 #### Dependencies:
 - Jquery.
@@ -88,11 +88,15 @@ PFU Architecture&Functions
 ```
 function pyramidFileUplaoder(arg,success,before,errorFun)
 
-arg.extintionSizeError() -> Default: use Sweetalert to show the errors to user, parameters: first-> list of files objects have extention error  ^^ second-> list of files objects have size error
+arg.extintionSizeError() -> Default: use Sweetalert to show the errors to user, 
+parameters: first-> list of files objects have extention error  
+^^ second-> list of files objects have size error
 
-success(serverResponse)  ->  Default:empty,function to excute in case of success state, parameters:server_response
+success(serverResponse)  ->  Default:empty,function to excute in case of success state
+parameters:server_response
 
-before() -> Default:true, if not ture, will not send the request to the server, used to validate other inputs before send data to the server,parameters:no
+before() -> Default:true, if not ture,request will not be sent to the server, 
+(used to validate other inputs before send data to the server),parameters:no
 
 errorFun(error) -> Default:empty,excuted when error,parameters:error
 
@@ -201,9 +205,8 @@ Example
 
 PFU Directory
 -------
-Pyramid File Uplaoder has "Imgs" folder,if you need to move this from
-Default:'root/PyramidFileUplaoder/"Imgs"' to another directory/Folder
-simply,, change the value of "imgsUrl"
+Pyramid File Uplaoder has "Imgs" folder,if you want to move  this... you will need to change the value of "imgsUrl"
+Default:'root/PyramidFileUplaoder/Imgs'
 
 Example
 -------
