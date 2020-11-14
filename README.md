@@ -1,6 +1,12 @@
 # PyramidFileUplaoder V 1.0
 PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
 
+Why I have developed this(main feature)?
+cuz of the free plugin for muli-files uploads makes backend more complex..
+those free plugins upload the files once the client select them, so it needs more code to determine which item ,the uplaoded files belongs to, also maybe the client select some files but he didn't create the item(didn't sumbit the form).
+Also, the client may need to remove files from the select files. incase of these plugins they have to request to server to do so(more complex), incase of PyrmidFileUploader, It stores the selected files into the browser untill the user submit the form. The user can remove files from the selected ones without talk to server as they are still local in the browser,Also It sends a single request contians the items and the files belongs to it.
+
+
 #### Features:
 - **Handle multiple files**.
 - **Built-In and Custom Validation**.
