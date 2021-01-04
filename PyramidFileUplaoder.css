@@ -1,0 +1,42 @@
+.p-MyModalPanel{
+    text-align:center;
+    padding:280px;
+    display:none;
+}
+.p-imgLoad{
+    width: 50px;
+}
+
+.p-textLoad{
+    font-size:20px;
+    color:white;
+}
+.p-file-icon{
+    width:40px;
+    margin: 5px;
+}
+.p-file-name{
+    margin: 5px;
+}
+.p-fileDel{
+    margin-left: 25px;
+}
+.p-img{
+    width: 200px; height: 100px; margin: 5px;
+}
+.p-item{
+    margin:5px;
+}
+/*
+.p-file-default{
+    background-image:url(../PyramidFileUplaoder/default.png);
+}
+
+.p-file-txt{
+    background-image:url(../PyramidFileUplaoder/txt.png);
+}
+
+.p-file-mp3{
+    background-image:url(../PyramidFileUplaoder/mp3.png);
+}
+*/
