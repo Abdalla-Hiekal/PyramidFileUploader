@@ -1,18 +1,12 @@
-# PyramidFileUplaoder V 1.0
+# PyramidFileUplaoder
 PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
-
-Why I have developed this(main feature)?
-cuz of the free plugin for muli-files uploads makes backend more complex..
-those free plugins upload the files once the client select them, so it needs more code to determine which item ,the uplaoded files belongs to, also maybe the client select some files but he didn't create the item(didn't sumbit the form).
-Also, the client may need to remove files from the select files. incase of these plugins they have to request to server to do so(more complex), incase of PyrmidFileUploader, It stores the selected files into the browser untill the user submit the form. The user can remove files from the selected ones without talk to server as they are still local in the browser,Also It sends a single request contians the items and the files belongs to it.
 
 
 #### Features:
 - **Handle multiple files**.
 - **Built-In and Custom Validation**.
 - **Server friendly**.
-- **Easy to use**.
-- **Send all form data to the server**.
+- **Send all form data to the server including the files in a single request.**.
 - **Flexible**.
 - **Secured from XSS Attacks**.
 
@@ -42,9 +36,8 @@ Simply call the "pyramidFileUplaoder" function & send Required parameters
             URL: "/Project/AddProject", // URl To send data
         },
         function success(result) {   //function to execute in success,"result" is the server response
-            //any action ...like redirect
             if (result.state = "ok") {
-
+            //any action ...like redirect
             location.href = result.data;
             } else {
             swal("Error", result.data, "error"); 
@@ -95,16 +88,15 @@ PFU Architecture&Functions
 function pyramidFileUplaoder(arg,success,before,errorFun)
 
 arg.extintionSizeError(list1,list2) -> Default: use Sweetalert to show the errors to user, 
-parameters: first-> list of files objects have extention error  
-^^ second-> list of files objects have size error
+parameters: list1-> list of files objects have extention error , list2-> list of files objects have size error
 
 success(serverResponse)  ->  Default:empty,function to excute in case of success state
-parameters:server_response
+parameters:the server's response
 
 before() -> Default:true, if not ture,request will not be sent to the server, 
 (used to validate other inputs before send data to the server),parameters:no
 
-errorFun(error) -> Default:empty,excuted when error,parameters:error
+errorFun(error) -> Default:empty,excuted in case of error,parameters:error
 
 ```
 Example
@@ -212,7 +204,7 @@ Example
 PFU Directory
 -------
 Pyramid File Uplaoder has "Imgs" folder,if you want to move  this... you will need to change the value of "imgsUrl"
-Default:'root/PyramidFileUplaoder/Imgs'
+Default:'/PyramidFileUplaoder/'
 
 Example
 -------
@@ -222,7 +214,7 @@ Example
             buttonId: "send",          //  Id of the button, input& button must be in a form
             containerId: "fileShower", // Container that will show the Choosen files
             URL: "/Project/AddProject", // URl To send data
-            imgsUrl: "/dir/dir/dir/dir/", //Optional,required in case of change directory
+            imgsUrl: "/dir/dir/dir/dir/", //Optional,(required in case of change directory)
         },
         function success(result) {   //function to excute in success,"result" is the server response
             //any action ...like redirect
