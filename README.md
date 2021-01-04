@@ -38,10 +38,10 @@ Simply call the "pyramidFileUplaoder" function & send Required parameters
         pyramidFileUplaoder({
             inputFileId: "fileInput", // Id of the input type="file"
             buttonId: "send",          // Id of the button, input & button must be in a form
-            containerId: "fileShower", // Container that will show the Choosen files
+            containerId: "fileShower", // Container that will show the Chosen files
             URL: "/Project/AddProject", // URl To send data
         },
-        function success(result) {   //function to excute in success,"result" is the server response
+        function success(result) {   //function to execute in success,"result" is the server response
             //any action ...like redirect
             if (result.state = "ok") {
 
