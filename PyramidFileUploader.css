@@ -1,0 +1,39 @@
+.p-MyModalPanel{
+    text-align:center;
+    padding:280px;
+    display:none;
+}
+.p-imgLoad{
+    width: 50px;
+}
+
+.p-textLoad{
+    font-size:20px;
+    color:white;
+}
+
+
+
+.pfu-box {
+    margin: 5px;
+    height: 100px;
+    overflow: hidden;
+    position:relative;
+}
+.p-img {
+    width: 100px;
+    height: 100px;
+}
+.p-item {
+    width: 85px;
+    height: 85px;
+}
+.p-fileDel-img {
+    margin-left: 25px;
+}
+
+.p-fileDel-item {
+    position: absolute;
+    left:110px;
+    top:33px
+}
