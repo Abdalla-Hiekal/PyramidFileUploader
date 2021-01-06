@@ -6,7 +6,6 @@ cuz of the free plugin for muli-files uploads makes backend more complex..
 those free plugins upload the files once the client select them, so it needs more code to determine which item ,the Uploaded files belongs to, also maybe the client select some files but he didn't create the item(didn't sumbit the form).
 Also, the client may need to remove files from the select files. incase of these plugins they have to request to server to do so(more complex), incase of PyrmidFileUploader, It stores the selected files into the browser untill the user submit the form. The user can remove files from the selected ones without talk to server as they are still local in the browser,Also It sends a single request contians the items and the files belongs to it.
 
-
 #### Features:
 - **Handle multiple files**.
 - **Built-In and Custom Validation**.
@@ -33,6 +32,7 @@ Include js and css files
 How to use
 -------
 Simply call the "pyramidFileUploader" function & send Required parameters
+Note to avoid any errors: your inputs and button must be in a form, also the button must be type="button"
 ```javascript
         pyramidFileUploader({
             inputFileId: "fileInput", // Id of the input type="file"
@@ -177,7 +177,8 @@ Example
 -------
 ```javascript
         pyramidFileUploader({
-            extintionSizeError: function (list1,list2) {  // override...(no longer sweetalert dependant), excuted in error state only
+         // override...(no longer sweetalert dependant), excuted in error state only
+            extintionSizeError: function (list1,list2) {
                 alert("error");
             },
             inputFileId: "fileInput", // Id of the input type="file"
