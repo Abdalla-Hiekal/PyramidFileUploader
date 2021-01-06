@@ -1,9 +1,9 @@
-# PyramidFileUplaoder
-PyramidFileUplaoder(PFU) is a Jquery plugin for uplaoding multi files
+# PyramidFileUploader
+PyramidFileUploader(PFU) is a Jquery plugin for Uploading multi files
 
 Why I have developed this(main feature)?
 cuz of the free plugin for muli-files uploads makes backend more complex..
-those free plugins upload the files once the client select them, so it needs more code to determine which item ,the uplaoded files belongs to, also maybe the client select some files but he didn't create the item(didn't sumbit the form).
+those free plugins upload the files once the client select them, so it needs more code to determine which item ,the Uploaded files belongs to, also maybe the client select some files but he didn't create the item(didn't sumbit the form).
 Also, the client may need to remove files from the select files. incase of these plugins they have to request to server to do so(more complex), incase of PyrmidFileUploader, It stores the selected files into the browser untill the user submit the form. The user can remove files from the selected ones without talk to server as they are still local in the browser,Also It sends a single request contians the items and the files belongs to it.
 
 
@@ -22,19 +22,19 @@ Also, the client may need to remove files from the select files. incase of these
 
 Include in your project
 -------
-Downlaod PyramidFileUplaoder plugin,Place the Folder "PyramidFileUplaoder" in root directory(if you want to place the Folder and it's files in diffrent location, you will need to change the default directory)
+Downlaod PyramidFileUploader plugin,Place the Folder "PyramidFileUploader" in root directory(if you want to place the Folder and it's files in diffrent location, you will need to change the default directory[PFU Directory])
 
 Include js and css files
 ```html
-    <link rel="stylesheet" href="/PyramidFileUplaoder/PyramidFileUplaoder.css">
-    <script src="/PyramidFileUplaoder/PyramidFileUplaoder.js"></script>
+    <link rel="stylesheet" href="/PyramidFileUploader/PyramidFileUploader.css">
+    <script src="/PyramidFileUploader/PyramidFileUploader.js"></script>
 ```
 
 How to use
 -------
-Simply call the "pyramidFileUplaoder" function & send Required parameters
+Simply call the "pyramidFileUploader" function & send Required parameters
 ```javascript
-        pyramidFileUplaoder({
+        pyramidFileUploader({
             inputFileId: "fileInput", // Id of the input type="file"
             buttonId: "send",          // Id of the button, input & button must be in a form
             containerId: "fileShower", // Container that will show the Chosen files
@@ -52,7 +52,7 @@ Simply call the "pyramidFileUplaoder" function & send Required parameters
 This is how it looks like
 -------
 
-![alt text](https://raw.githubusercontent.com/Abdalla-Hiekal/PyramidFileUplaoder/master/1.PNG)
+![alt text](https://raw.githubusercontent.com/Abdalla-Hiekal/PyramidFileUploader/master/1.PNG)
 -------
 In this example I will use ASP.NET MVC as backend
 -------
@@ -85,29 +85,98 @@ Note: inputs&button must be in a form
             }
         }
 ```
-"AddProject" method receive an object of "project" and list of files from the clientside(PFU)
+"AddProject" method receive an object of "project" and list of files.
 
-PFU Architecture&Functions
+PFU Validation
+-------
+Note: dont use clientside validation only,, you need to make your serverside validation(to be more secure)
+```
+    min -> determine minimum number of files, Default:0
+    max -> determine maximum number of files, Default:10
+    maxSize -> determine minimum size for each file, Default:20 MB
+    onlyImage -> allow only Image Extintions, Default:false
+    allowEX -> allow custom Extintions as array eg... ['pdf','doc','docs']
+```
+Example
+-------
+```javascript
+        pyramidFileUploader({
+            inputFileId: "fileInput", //  Id of the input type="file"
+            buttonId: "send",          //  Id of the button, input& button must be in a form
+            containerId: "fileShower", // Container that will show the Choosen files
+            URL: "/Project/AddProject", // URl To send data
+            max: 4, //Optional
+            min: 1, //Optional
+            onlyImage: true, //Optional
+            maxSize: 4, //4MB, Optional
+        },
+        function success(result) {   //function to excute in success,"result" is the server response
+            //any action ...like redirect
+            if (result.state = "ok") {
+
+            location.href = result.data;
+            } else {
+            swal("Error", result.data, "error"); 
+            }
+        });
+```
+-------
+PFU Styling
+-------
+    Pyramid File Uploader Bootstrap v3 dependant and has a built-in loading mode,
+    Developers can choose their spinning(custom gif loading)
+    also, they can change the name and the color of the button,
+    colors:(info,primary,danger, etc..) as bootstrap v3
+
+```
+    gifLoading -> Default:(root)/PyramidFileUploader/Imgs/loading.gif
+    buttonStyle -> Default:info
+    buttonName -> Default:Browse
+```
+Example
+-------
+```javascript
+        pyramidFileUploader({
+            inputFileId: "fileInput", //  Id of the input type="file"
+            buttonId: "send",          //  Id of the button, input& button must be in a form
+            containerId: "fileShower", // Container that will show the Choosen files
+            URL: "/Project/AddProject", // URl To send data
+            gifLoading: "/dir/dir/dir/dir/spinning.gif", //Optional
+            buttonStyle: 'primary', //Optional
+            buttonName: 'Choose Images', //Optional
+        },
+        function success(result) {   //function to excute in success,"result" is the server response
+            //any action ...like redirect
+            if (result.state = "ok") {
+
+            location.href = result.data;
+            } else {
+            swal("Error", result.data, "error"); 
+            }
+        });
+```
+-------
+PFU Architecture & Functions
 -------
 ```
-function pyramidFileUplaoder(arg,success,before,errorFun)
-
-arg.extintionSizeError(list1,list2) -> Default: use Sweetalert to show the errors to user, 
-parameters: list1-> list of files objects have extention error , list2-> list of files objects have size error
-
-success(serverResponse)  ->  Default:empty,function to excute in case of success state
-parameters:the server's response
-
-before() -> Default:true, if not ture,request will not be sent to the server, 
-(used to validate other inputs before send data to the server),parameters:no
-
-errorFun(error) -> Default:empty,excuted in case of error,parameters:error
+    function pyramidFileUploader(arg,success,before,errorFun)
+    
+    arg.extintionSizeError(list1,list2) -> Default: use Sweetalert to show the errors to user, 
+    parameters: list1-> list of files objects have extention error , list2-> list of files objects have size error
+    
+    success(serverResponse)  ->  Default:empty,function to excute in case of success state
+    parameters:the server's response
+    
+    before() -> Default:true, if not ture,request will not be sent to the server, 
+    (used to validate other inputs before send data to the server),parameters:no
+    
+    errorFun(error) -> Default:empty,excuted in case of error,parameters:error
 
 ```
 Example
 -------
 ```javascript
-        pyramidFileUplaoder({
+        pyramidFileUploader({
             extintionSizeError: function (list1,list2) {  // override...(no longer sweetalert dependant), excuted in error state only
                 alert("error");
             },
@@ -136,85 +205,15 @@ Example
 ```
 -------
 
-PFU Validation
--------
-Note: dont use clientside validation only,, you have to make your serverside validation
-```
-min -> determine minimum number of files, Default:0
-max -> determine maximum number of files, Default:10
-maxSize -> determine minimum size for each file, Default:20 MB
-onlyImage -> allow only Image Extintions, Default:false
-allowEX -> allow custom Extintions as array eg... ['pdf','doc','docs']
-```
-Example
--------
-```javascript
-        pyramidFileUplaoder({
-            inputFileId: "fileInput", //  Id of the input type="file"
-            buttonId: "send",          //  Id of the button, input& button must be in a form
-            containerId: "fileShower", // Container that will show the Choosen files
-            URL: "/Project/AddProject", // URl To send data
-            max: 4, //Optional
-            min: 1, //Optional
-            onlyImage: true, //Optional
-            maxSize: 4, //4MB, Optional
-        },
-        function success(result) {   //function to excute in success,"result" is the server response
-            //any action ...like redirect
-            if (result.state = "ok") {
-
-            location.href = result.data;
-            } else {
-            swal("Error", result.data, "error"); 
-            }
-        });
-```
--------
-PFU Styling
--------
-Pyramid File Uplaoder Bootstrap v3 dependant and has a built-in loading mode,
-Developers can choose their spinning(custom gif loading)
-also, they can change the name and the color of the button,
-colors:(info,primary,danger, etc..) as bootstrap v3
-
-```
-gifLoading -> Default:(root)/PyramidFileUplaoder/Imgs/loading.gif
-buttonStyle -> Default:info
-buttonName -> Default:Browse
-```
-Example
--------
-```javascript
-        pyramidFileUplaoder({
-            inputFileId: "fileInput", //  Id of the input type="file"
-            buttonId: "send",          //  Id of the button, input& button must be in a form
-            containerId: "fileShower", // Container that will show the Choosen files
-            URL: "/Project/AddProject", // URl To send data
-            gifLoading: "/dir/dir/dir/dir/spinning.gif", //Optional
-            buttonStyle: 'primary', //Optional
-            buttonName: 'Choose Images', //Optional
-        },
-        function success(result) {   //function to excute in success,"result" is the server response
-            //any action ...like redirect
-            if (result.state = "ok") {
-
-            location.href = result.data;
-            } else {
-            swal("Error", result.data, "error"); 
-            }
-        });
-```
--------
-
 PFU Directory
 -------
-Pyramid File Uplaoder has "Imgs" folder,if you want to move  this... you will need to change the value of "imgsUrl"
-Default:'/PyramidFileUplaoder/'
+Pyramid File Uploader has "Imgs" folder,if you want to move  this... you will need to change the value of "imgsUrl"
+Default:'/PyramidFileUploader/'
 
 Example
 -------
 ```javascript
-        pyramidFileUplaoder({
+        pyramidFileUploader({
             inputFileId: "fileInput", //  Id of the input type="file"
             buttonId: "send",          //  Id of the button, input& button must be in a form
             containerId: "fileShower", // Container that will show the Choosen files
@@ -232,4 +231,4 @@ Example
         });
 ```
 -------
-Version 1.1 soon!
+Version 2.0 soon!
