@@ -11,32 +11,29 @@
     font-size:20px;
     color:white;
 }
-.p-file-icon{
-    width:40px;
+
+
+
+.pfu-box {
     margin: 5px;
+    height: 100px;
+    overflow: hidden;
+    position:relative;
 }
-.p-file-name{
-    margin: 5px;
+.p-img {
+    width: 100px;
+    height: 100px;
 }
-.p-fileDel{
+.p-item {
+    width: 85px;
+    height: 85px;
+}
+.p-fileDel-img {
     margin-left: 25px;
 }
-.p-img{
-    width: 200px; height: 100px; margin: 5px;
-}
-.p-item{
-    margin:5px;
-}
-/*
-.p-file-default{
-    background-image:url(../PyramidFileUplaoder/default.png);
-}
 
-.p-file-txt{
-    background-image:url(../PyramidFileUplaoder/txt.png);
+.p-fileDel-item {
+    position: absolute;
+    left:110px;
+    top:33px
 }
-
-.p-file-mp3{
-    background-image:url(../PyramidFileUplaoder/mp3.png);
-}
-*/
