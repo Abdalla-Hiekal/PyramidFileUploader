@@ -12,11 +12,12 @@ function pyramidFileUploader(arg, success, before, errorFun) {
     arg.imgsUrl = typeof arg.imgsUrl !== 'undefined' ? arg.imgsUrl : document.location.origin + '/PyramidFileUploader/Imgs/';
     arg.gifLoading = typeof arg.gifLoading !== 'undefined' ? arg.gifLoading : arg.imgsUrl + 'loading.gif';
     arg.onlyImage = typeof arg.onlyImage !== 'undefined' ? arg.onlyImage : false;
-    arg.maxSize = typeof arg.maxSize !== 'undefined' ? arg.maxSize : 25;
+    arg.maxSize = typeof arg.maxSize !== 'undefined' ? arg.maxSize : 2;
     arg.allowEX = typeof arg.allowEX !== 'undefined' ? arg.allowEX : [];
     arg.max = typeof arg.max !== 'undefined' ? arg.max : 10;
     arg.min = typeof arg.min !== 'undefined' ? arg.min : 0;
     before = typeof before !== 'undefined' ? before : true;
+    errorFun = typeof errorFun !== 'undefined' ? errorFun : function (xhr, status, error) {console.log(xhr.responseText );};
 
     //multiple file
     $("#" + arg.inputFileId).attr("multiple", "");
@@ -81,7 +82,6 @@ function pyramidFileUploader(arg, success, before, errorFun) {
             file.File = files[i];
             file.Id = FileId;
             Files.push(file);
-            console.log(FileId+" ");
 
             if ($.inArray(fileEX, imgEx) != -1) {
                 var reader = new FileReader();
@@ -97,7 +97,6 @@ function pyramidFileUploader(arg, success, before, errorFun) {
 
                 // Process file
                 reader.readAsDataURL(files[i]);
-                console.log(FileId + " ");
 
             } else {
 
@@ -112,18 +111,18 @@ function pyramidFileUploader(arg, success, before, errorFun) {
             }
         }
         if (extentionError.length > 0 || sizeError.length > 0) {
-            if (typeof arg.ExtintionSizeError === 'undefined') {
-                arg.ExtintionSizeError = function (extention, size) {
+            if (typeof arg.extensionSizeError === 'undefined') {
+                arg.extensionSizeError = function (extention, size) {
                     if (extention.length > 0 && size.length > 0) {
-                        swal("Error", "File extintion should be " + arg.allowEX.toString() + " and less than or equal " + arg.maxSize + " MB", "error");
+                        swal("Error", "File extension must be " + arg.allowEX.toString() + " and less than or equal " + arg.maxSize + " MB", "error");
                     } else if (extention.length > 0) {
-                        swal("Error", "File extintion should be " + arg.allowEX.toString() + " ", "error");
+                        swal("Error", "File extension must be " + arg.allowEX.toString() + " ", "error");
                     } else if (size.length > 0) {
-                        swal("Error", "File extintion should be less than or equal " + arg.maxSize + " MB", "error");
+                        swal("Error", "File size must be less than or equal " + arg.maxSize + " MB", "error");
                     }
                 };
             }
-            arg.ExtintionSizeError(extentionError, sizeError);
+            arg.extensionSizeError(extentionError, sizeError);
         }
     });
 
@@ -182,8 +181,8 @@ function pyramidFileUploader(arg, success, before, errorFun) {
                 success: function (result) {
                     success(result);
                 },
-                error: function (error) {
-                    errorFun(error);
+                error: function (xhr, status, error) {
+                    errorFun(xhr, status, error);
                 }
             });
             $('#p-loading').hide();
